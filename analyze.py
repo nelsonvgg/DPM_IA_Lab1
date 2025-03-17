@@ -2,9 +2,14 @@ from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 from msrest.authentication import CognitiveServicesCredentials
 from azure.cognitiveservices.vision.computervision.models import OperationStatusCodes
 import time
+import json
 
-endpoint = "ENTER ENDPOINT HERE"
-key = "ENTER KEY HERE"
+# Load credentials from config.json
+with open("config.json", "r") as config_file:
+    config = json.load(config_file)
+
+endpoint = config["endpoint"]
+key = config["key"]
 
 credentials = CognitiveServicesCredentials(key)
 
